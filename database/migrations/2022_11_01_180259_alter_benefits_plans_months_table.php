@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('benefits_plans_months', function (Blueprint $table) {
+            //
+            $table->foreign('benefit_plan_month_change_id')->references('id')->on('benefits_plans_months');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('benefits_plans_months', function (Blueprint $table) {
+            //
+            $table->dropForeign('benefit_plan_month_change_id');
+        });
+    }
+};
